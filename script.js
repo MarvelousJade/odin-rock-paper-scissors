@@ -1,5 +1,3 @@
-console.log("Hello, World");
-
 function getComputerChoice() {
   let randomInt = Math.floor(Math.random() * 3);
   let computerChoice = "Rock";
@@ -16,7 +14,9 @@ function getHumanChoice() {
 
   while (!rightChoice) {
     humanChoice = prompt("What's your choice? (Choose between Rock, Paper and Scissors.)");
-    if (humanChoice === "Rock" || humanChoice === "Paper" || humanChoice === "Scissors") {
+    humanScore.toUpperCase();
+
+    if (humanChoice === "ROCK" || humanChoice === "PAPER" || humanChoice === "SCISSORS") {
       rightChoice = true;
     } 
   }
@@ -25,3 +25,9 @@ function getHumanChoice() {
 }
 
 getHumanChoice();
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound() {
+
+}
