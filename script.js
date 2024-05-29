@@ -28,26 +28,44 @@ function getHumanChoice() {
   return humanChoice;
 }
 
-let humanScore = 0;
-let computerScore = 0;
 
-function playRound(humanChoice, computerChoice) {
-  if ((humanChoice === "Rock" && computerChoice === "Scissors") 
-  || (humanChoice === "Paper" && computerChoice === "Rock") 
-  || (humanChoice === "Scissors" && computerChoice === "Paper")) {
-    humanScore++;
-    console.log(`You win! ${humanChoice} beats ${computerChoice}`);
-  } else if ((humanChoice === "ROCK" && computerChoice === "Rock") 
-  || (humanChoice === "PAPER" && computerChoice === "PAPER") 
-  || (humanChoice === "SCISSORS" && computerChoice === "Scissors")) {
-    console.log("It's a tie! Try again");
+
+function playGame() {
+  let humanScore = 0;
+  let computerScore = 0;
+
+  for (let round = 0; round < 5; round++) {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+
+    playRound(humanSelection, computerSelection);
+  }
+  
+  function playRound(humanChoice, computerChoice) {
+    if ((humanChoice === "Rock" && computerChoice === "Scissors") 
+    || (humanChoice === "Paper" && computerChoice === "Rock") 
+    || (humanChoice === "Scissors" && computerChoice === "Paper")) {
+      humanScore++;
+      console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+    } else if ((humanChoice === "Rock" && computerChoice === "Rock") 
+    || (humanChoice === "Paper" && computerChoice === "Paper") 
+    || (humanChoice === "Scissors" && computerChoice === "Scissors")) {
+      console.log("It's a tie! Try again");
+    } else {
+      computerScore++;
+      console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+    }
+  }
+  
+  if (humanScore > computerScore) {
+    console.log("You win!")
+  } else if (humanScore === computerScore) {
+    console.log("It's a tie!")
   } else {
-    computerScore++;
-    console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+    console.log("You lose!")
   }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
+playGame();
+  
+  
