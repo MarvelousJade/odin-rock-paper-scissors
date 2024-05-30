@@ -16,9 +16,7 @@ function getHumanChoice() {
   while (!rightChoice) {
     humanChoice = prompt("What's your choice? (Choose between Rock, Paper and Scissors. Five rounds total.)");
     let humanChoiceUpper = humanChoice.toUpperCase();
-    if (humanChoiceUpper === "ROCK" 
-    || humanChoiceUpper === "PAPER" 
-    || humanChoiceUpper === "SCISSORS") {
+    if (humanChoiceUpper === "ROCK" || humanChoiceUpper === "PAPER" || humanChoiceUpper === "SCISSORS") {
       rightChoice = true;
     } 
   }
@@ -42,14 +40,14 @@ function playGame() {
   }
   
   function playRound(humanChoice, computerChoice) {
-    if ((humanChoice === "Rock" && computerChoice === "Scissors") 
-    || (humanChoice === "Paper" && computerChoice === "Rock") 
-    || (humanChoice === "Scissors" && computerChoice === "Paper")) {
+    if (
+      (humanChoice === "Rock" && computerChoice === "Scissors") || 
+      (humanChoice === "Paper" && computerChoice === "Rock") ||
+      (humanChoice === "Scissors" && computerChoice === "Paper")
+    ) {
       humanScore++;
       alert(`You win! ${humanChoice} beats ${computerChoice}`);
-    } else if ((humanChoice === "Rock" && computerChoice === "Rock") 
-    || (humanChoice === "Paper" && computerChoice === "Paper") 
-    || (humanChoice === "Scissors" && computerChoice === "Scissors")) {
+    } else if (humanChoice === computerChoice) {
       alert("It's a tie!");
     } else {
       computerScore++;
