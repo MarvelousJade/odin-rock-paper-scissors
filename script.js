@@ -26,7 +26,7 @@ function getHumanChoice() {
   return humanChoice;
 }
 
-
+const buttons = document.querySelectorAll("button");
 
 function playGame() {
   let humanScore = 0;
@@ -38,7 +38,13 @@ function playGame() {
 
   //   playRound(humanSelection, computerSelection);
   // }
-  
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      playRound(button.id, getComputerChoice());
+    });
+  }) 
+
   function playRound(humanChoice, computerChoice) {
     if (
       (humanChoice === "Rock" && computerChoice === "Scissors") || 
@@ -62,12 +68,8 @@ function playGame() {
   } else {
     alert(`You lose! Your score: ${humanScore}. Computer score: ${computerScore}`);
   }
-  
-  const btn = document.querySelectorAll("button");
-  
-  btn.addEventlistener("click", function);
 }
 
-playGame();
+// playGame();
   
   
