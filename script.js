@@ -9,29 +9,29 @@ function getComputerChoice() {
   return computerChoice;
 }
 
-function getHumanChoice() {
-  let rightChoice = false;
-  let humanChoice;
+// function getHumanChoice() {
+//   let rightChoice = false;
+//   let humanChoice;
 
-  while (!rightChoice) {
-    humanChoice = prompt("What's your choice? (Choose between Rock, Paper and Scissors. Five rounds total.)");
-    let humanChoiceUpper = humanChoice.toUpperCase();
-    if (humanChoiceUpper === "ROCK" || humanChoiceUpper === "PAPER" || humanChoiceUpper === "SCISSORS") {
-      rightChoice = true;
-    } 
-  }
+//   while (!rightChoice) {
+//     humanChoice = prompt("What's your choice? (Choose between Rock, Paper and Scissors. Five rounds total.)");
+//     let humanChoiceUpper = humanChoice.toUpperCase();
+//     if (humanChoiceUpper === "ROCK" || humanChoiceUpper === "PAPER" || humanChoiceUpper === "SCISSORS") {
+//       rightChoice = true;
+//     } 
+//   }
 
-  humanChoice = humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1);
+//   humanChoice = humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1);
 
-  return humanChoice;
-}
+//   return humanChoice;
+// }
 
 const buttons = document.querySelectorAll("button");
 
 function playGame() {
   let humanScore = 0;
   let computerScore = 0;
-
+  let round = 0;
   // for (let round = 0; round < 5; round++) {
   //   const humanSelection = getHumanChoice();
   //   const computerSelection = getComputerChoice();
@@ -41,7 +41,9 @@ function playGame() {
 
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
+      round++; 
       playRound(button.id, getComputerChoice());
+      displayResult();
     });
   }) 
 
@@ -61,15 +63,18 @@ function playGame() {
     }
   }
   
-  if (humanScore > computerScore) {
-    alert(`You win! Your score: ${humanScore}. Computer score: ${computerScore}`);
-  } else if (humanScore === computerScore) {
-    alert(`It's a tie! Your score: ${humanScore}. Computer score: ${computerScore}`);
-  } else {
-    alert(`You lose! Your score: ${humanScore}. Computer score: ${computerScore}`);
+  function displayResult() {
+    if (round >= 5) {
+      if (humanScore > computerScore) {
+        alert(`You win! Your score: ${humanScore}. Computer score: ${computerScore}`);
+      } else if (humanScore === computerScore) {
+        alert(`It's a tie! Your score: ${humanScore}. Computer score: ${computerScore}`);
+      } else if (humanScore < computerScore){
+        alert(`You lose! Your score: ${humanScore}. Computer score: ${computerScore}`);
+      }
+    }
   }
 }
-
-// playGame();
+playGame();
   
   
