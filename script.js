@@ -18,9 +18,9 @@ function playGame() {
   const div = document.createElement("div");
   const container = document.querySelector("#container");
 
-
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
+      div.textContent = "";
       round++; 
       playRound(button.id, getComputerChoice());
       container.appendChild(div);
@@ -36,12 +36,12 @@ function playGame() {
       (humanChoice === "Scissors" && computerChoice === "Paper")
     ) {
       humanScore++;
-      div.textContent = `You win! ${humanChoice} beats ${computerChoice}`;
+      div.textContent = `Round ${round}: You win! ${humanChoice} beats ${computerChoice}`;
     } else if (humanChoice === computerChoice) {
-      div.textContent = "It's a tie!";
+      div.textContent = `Round ${round}: It's a tie!`;
     } else {
       computerScore++;
-      div.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
+      div.textContent = `Round ${round}: You lose! ${computerChoice} beats ${humanChoice}`;
     }
   }
   
@@ -54,6 +54,10 @@ function playGame() {
       } else if (humanScore < computerScore){
         div.textContent = `You lose! Your score: ${humanScore}. Computer score: ${computerScore}`;
       }
+      
+      round = 0;
+      humanScore = 0;
+      computerScore = 0;
     }
   }
 }
