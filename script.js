@@ -9,41 +9,23 @@ function getComputerChoice() {
   return computerChoice;
 }
 
-// function getHumanChoice() {
-//   let rightChoice = false;
-//   let humanChoice;
-
-//   while (!rightChoice) {
-//     humanChoice = prompt("What's your choice? (Choose between Rock, Paper and Scissors. Five rounds total.)");
-//     let humanChoiceUpper = humanChoice.toUpperCase();
-//     if (humanChoiceUpper === "ROCK" || humanChoiceUpper === "PAPER" || humanChoiceUpper === "SCISSORS") {
-//       rightChoice = true;
-//     } 
-//   }
-
-//   humanChoice = humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1);
-
-//   return humanChoice;
-// }
-
 const buttons = document.querySelectorAll("button");
 
 function playGame() {
   let humanScore = 0;
   let computerScore = 0;
   let round = 0;
-  // for (let round = 0; round < 5; round++) {
-  //   const humanSelection = getHumanChoice();
-  //   const computerSelection = getComputerChoice();
+  const div = document.createElement("div");
+  const container = document.querySelector("#container");
 
-  //   playRound(humanSelection, computerSelection);
-  // }
 
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
       round++; 
       playRound(button.id, getComputerChoice());
+      container.appendChild(div);
       displayResult();
+      container.appendChild(div)
     });
   }) 
 
@@ -54,27 +36,28 @@ function playGame() {
       (humanChoice === "Scissors" && computerChoice === "Paper")
     ) {
       humanScore++;
-      alert(`You win! ${humanChoice} beats ${computerChoice}`);
+      div.textContent = `You win! ${humanChoice} beats ${computerChoice}`;
     } else if (humanChoice === computerChoice) {
-      alert("It's a tie!");
+      div.textContent = "It's a tie!";
     } else {
       computerScore++;
-      alert(`You lose! ${computerChoice} beats ${humanChoice}`);
+      div.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
     }
   }
   
   function displayResult() {
     if (round >= 5) {
       if (humanScore > computerScore) {
-        alert(`You win! Your score: ${humanScore}. Computer score: ${computerScore}`);
+        div.textContent = `You win! Your score: ${humanScore}. Computer score: ${computerScore}`;
       } else if (humanScore === computerScore) {
-        alert(`It's a tie! Your score: ${humanScore}. Computer score: ${computerScore}`);
+        div.textContent = `It's a tie! Your score: ${humanScore}. Computer score: ${computerScore}`;
       } else if (humanScore < computerScore){
-        alert(`You lose! Your score: ${humanScore}. Computer score: ${computerScore}`);
+        div.textContent = `You lose! Your score: ${humanScore}. Computer score: ${computerScore}`;
       }
     }
   }
 }
+
 playGame();
   
   
