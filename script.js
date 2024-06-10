@@ -32,12 +32,12 @@ function playGame() {
   let humanScore = 0;
   let computerScore = 0;
 
-  for (let round = 0; round < 5; round++) {
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
+  // for (let round = 0; round < 5; round++) {
+  //   const humanSelection = getHumanChoice();
+  //   const computerSelection = getComputerChoice();
 
-    playRound(humanSelection, computerSelection);
-  }
+  //   playRound(humanSelection, computerSelection);
+  // }
   
   function playRound(humanChoice, computerChoice) {
     if (
@@ -62,6 +62,10 @@ function playGame() {
   } else {
     alert(`You lose! Your score: ${humanScore}. Computer score: ${computerScore}`);
   }
+  
+  const btn = document.querySelectorAll("button");
+  
+  btn.addEventlistener("click", function);
 }
 
 playGame();
